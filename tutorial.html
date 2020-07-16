@@ -74,7 +74,7 @@
 <p>There are a lot of different static website generation tools out there – <a href="https://www.staticgen.com">this list</a> has over 100! </p>
 <p>I use a tool called Pelican which is written in Python and lets me turn Markdown text files into blog posts. I chose this tool because I’m already familiar with Python, and because it’s optimised for what I’m after – making a nice-looking blog with a mixture of images, links and text. It’s open-source and there are a lot of decorative <a href="http://www.pelicanthemes.com/">themes</a> available for you to style your blog. <a href="https://raspberrycheesecake.github.io/">Mine</a> uses the Blue Penguin theme. It’s also used by some of the cool kids like <a href="https://www.fullstackpython.com/blog/generating-static-websites-pelican-jinja2-markdown.html">Full Stack Python</a>.</p>
 <h1>Getting started</h1>
-<p>Pelican works in both Python 2.7 and Python 3. This tutorial will walk you through how to set things up in Python 3 on Ubuntu. It’s a very similar process when using MacOs, and (here is a tutorial)[https://spapas.github.io/2013/10/07/pelican-static-windows/] that explains how to run Pelican on Windows.</p>
+<p>Pelican works in both Python 2.7 and Python 3. This tutorial will walk you through how to set things up in Python 3 on Ubuntu. It’s a very similar process when using MacOs, and <a href="https://spapas.github.io/2013/10/07/pelican-static-windows/">here is a tutorial</a> that explains how to run Pelican on Windows.</p>
 <p>First of all, you’ll want to install Pelican. You can do this with the Python package manager pip. Open a command line in the folder you’d like to make your website files in, and type:</p>
 <div class="highlight"><pre><span></span><code>pip install pelican
 pip install Markdown
@@ -147,18 +147,18 @@ archives.html  authors.html  categories.html  index.html  tags.html  theme
 <p>This isn't personalised yet and it doesn’t have any blog posts. So let’s add one! </p>
 <h1>Add a blog post</h1>
 <p>To add a blog post, you just need to make a Markdown file inside the <code>content</code> folder. We’ll call this <code>first-post.md</code>. Note that we need to include a title and some other info in the header.</p>
-<div class="highlight"><pre><span></span><code><span class="n">Title</span><span class="o">:</span> <span class="n">F1rst</span> <span class="n">P0st</span><span class="o">!!</span>
-<span class="n">Date</span><span class="o">:</span> <span class="mi">2020</span><span class="o">-</span><span class="mi">07</span><span class="o">-</span><span class="mi">15</span>
-<span class="n">slug</span><span class="o">:</span> <span class="n">first</span><span class="o">-</span><span class="n">post</span>
-<span class="n">Category</span><span class="o">:</span> <span class="n">hannah</span><span class="err">’</span><span class="n">s</span> <span class="n">posts</span>
-<span class="n">tags</span><span class="o">:</span> <span class="n">pelican</span><span class="o">,</span> <span class="n">first</span> <span class="n">time</span> <span class="k">for</span> <span class="n">everything</span><span class="o">,</span> <span class="k">new</span>
-<span class="n">Summary</span><span class="o">:</span> <span class="n">Why</span> <span class="n">are</span> <span class="n">we</span> <span class="n">using</span> <span class="n">Pelican</span> <span class="k">for</span> <span class="k">this</span> <span class="n">blog</span><span class="o">?</span>
+<div class="highlight"><pre><span></span><code>Title: F1rst P0st!!
+Date: 2020-07-15
+slug: first-post
+Category: hannah&#39;s posts
+tags: pelican, first time for everything, new
+Summary: Why are we using Pelican for this blog?
 
-<span class="n">This</span> <span class="k">is</span> <span class="n">my</span> <span class="n">first</span> <span class="n">blog</span> <span class="n">post</span><span class="o">.</span>
+This is my first blog post.
 
-<span class="err">#</span> <span class="n">Subheading</span>
+# Subheading
 
-<span class="n">Because</span> <span class="n">Pelican</span> <span class="k">is</span> <span class="n">cool</span><span class="o">.</span>
+Because Pelican is cool.
 </code></pre></div>
 
 
@@ -169,9 +169,9 @@ We can even click the post title to see it on its own page (named after the <cod
 <p>To add images to your posts, you need to add a separate <code>images</code> directory inside the <code>content</code> directory. Linking to these images from a blog post is done like <code>![Mouseover text]({static}/images/my_image.png)</code></p>
 <p>Things like headings, bullet points, indented quotations and so on can be done in plain Markdown. See <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">the Markdown Cheatsheet</a> for a handy reference.</p>
 <h2>Themes</h2>
-<p>There are lots of pre-made themes to style the appearance of your new blog. Take a look at [the Pelican Theme previews](http://www.pelicanthemes.com/] for inspiration. Download one you like from GitHub – <a href="https://github.com/getpelican/pelican-themes">the collection is here</a> </p>
+<p>There are lots of pre-made themes to style the appearance of your new blog. Take a look at <a href="http://www.pelicanthemes.com/">the Pelican Theme previews</a> for inspiration. Download one you like from GitHub – <a href="https://github.com/getpelican/pelican-themes">the collection is here</a> </p>
 <p>Then add a line to your <code>pelicanconf.py</code> file to point at the location you downloaded it to:</p>
-<div class="highlight"><pre><span></span><code><span class="n">THEME</span> <span class="o">=</span> <span class="err">“</span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">user</span><span class="o">/</span><span class="n">theme</span><span class="o">-</span><span class="n">location</span><span class="o">/</span><span class="n">theme</span><span class="o">-</span><span class="n">name</span><span class="err">”</span>
+<div class="highlight"><pre><span></span><code><span class="n">THEME</span> <span class="o">=</span> <span class="s2">&quot;/home/user/theme-location/theme-name&quot;</span>
 </code></pre></div>
 
 
