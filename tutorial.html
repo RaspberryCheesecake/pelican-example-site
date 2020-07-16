@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+	<head>
+		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Metadata -->
+	<meta name="description" content="">
+	<meta property="og:description" content="">
+	<meta property="og:title" content="Make your blog with Python and Pelican for fun and profit" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="/tutorial.html" />
+		<meta property="og:image" content="/images/pelican.png" />
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<title>Pelican Example Site</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="/theme/css/poole.css" />
+		<link rel="stylesheet" href="/theme/css/hyde.css" />
+		<link rel="stylesheet" href="/theme/css/syntax.css" />
+		<link rel="stylesheet" href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css">
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
+
+		<!-- Atom feed -->
+		<link rel="alternate" type="application/atom+xml" title="Pelican Example Site (Feed)" href="None" />
+	</head>
+
+	<body class="theme-base-0d">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="/">
+					<img class="profile-picture" src="/images/pelican.png">
+					Pelican Example Site
+				</a>
+			</h1>
+			<p class="lead"></p>
+			<p class="lead"> </p>
+			<p></p>
+		</div>
+		<nav class="sidebar-nav">
+					<a class="sidebar-nav-item" href="mailto:hannah.hazi@cantab.net">
+						<i class="fas fa-envelope"></i>
+					</a>
+					<a class="sidebar-nav-item" href="https://github.com/RaspberryCheesecake">
+						<i class="fab fa-github"></i>
+					</a>
+			<a class="sidebar-nav-item" href="None">
+				<i class="fas fa-rss"></i>
+			</a>
+		</nav>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">Make your blog with Python and Pelican for fun and profit</h1>
+	<span class="post-date">Wed 15 July 2020</span>
+	<h1>What is a static site?</h1>
+<p>A static website is any site that uses pre-built files. Static sites are ideal for things like blogging, tutorials and simple displays of text. They’re lovely and lightweight to host because they don’t ask the server to execute any code to display them – the server just responds with the files we made earlier. Let’s learn how to make a static blog with Python!</p>
+<p>The files that govern the appearance of every site on the web are written in HTML, CSS and Javascript.</p>
+<p><img alt="Inspect" src="/images/inspect-elements.png">
+<em>To see this background code of a website you can ‘inspect elements’ in your browser.</em></p>
+<p>These are the languages of the web. Your browser knows how to interpret them to display webpages. But they can be hard to work with. I put together a website from scratch in HTML when I was first learning about web development. It took quite a bit of effort to add pages and different fonts, with some Javascript bits and pieces for the interactive parts like buttons. But it still didn’t look very professional – more like it had emerged from the 90s!</p>
+<p>So these days, many people prefer to use website generation tools which produce beautiful-looking web pages with less effort and without their having to learn these three languages directly. </p>
+<h1>Why Pelican?</h1>
+<p>There are a lot of different static website generation tools out there – <a href="https://www.staticgen.com">this list</a> has over 100! </p>
+<p>I use a tool called Pelican which is written in Python and lets me turn Markdown text files into blog posts. I chose this tool because I’m already familiar with Python, and because it’s optimised for what I’m after – making a nice-looking blog with a mixture of images, links and text. It’s open-source and there are a lot of decorative <a href="http://www.pelicanthemes.com/">themes</a> available for you to style your blog. <a href="https://raspberrycheesecake.github.io/">Mine</a> uses the Blue Penguin theme. It’s also used by some of the cool kids like <a href="https://www.fullstackpython.com/blog/generating-static-websites-pelican-jinja2-markdown.html">Full Stack Python</a>.</p>
+<h1>Getting started</h1>
+<p>Pelican works in both Python 2.7 and Python 3. This tutorial will walk you through how to set things up in Python 3 on Ubuntu. It’s a very similar process when using MacOs, and (here is a tutorial)[https://spapas.github.io/2013/10/07/pelican-static-windows/] that explains how to run Pelican on Windows.</p>
+<p>First of all, you’ll want to install Pelican. You can do this with the Python package manager pip. Open a command line in the folder you’d like to make your website files in, and type:</p>
+<div class="highlight"><pre><span></span><code>pip install pelican
+pip install Markdown
+</code></pre></div>
+
+
+<p>Installing the <code>Markdown</code> module is important to support turning your markdown files into web pages. If you don’t have pip yet, you can install it locally by calling <code>curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py</code>. </p>
+<p>Next, we call <code>pelican-quickstart</code>. This command sets up all the files and folders you’ll need. It’ll ask you a series of questions. Say ‘Yes’ to creating a Makefile to automate generation and publishing.</p>
+<div class="highlight"><pre><span></span><code><span class="o">(</span>venv<span class="o">)</span>hannah@lovelace:~/Code/pelican-example-site$ pelican-quickstart
+Welcome to pelican-quickstart v4.2.0.
+
+This script will <span class="nb">help</span> you create a new Pelican-based website.
+
+Please answer the following questions so this script can generate the files
+needed by Pelican.
+
+
+&gt; Where <span class="k">do</span> you want to create your new web site? <span class="o">[</span>.<span class="o">]</span> .
+&gt; What will be the title of this web site? Pelican Example Site
+&gt; Who will be the author of this web site? Hannah Hazi
+&gt; What will be the default language of this web site? <span class="o">[</span>en<span class="o">]</span> 
+&gt; Do you want to specify a URL prefix? e.g., https://example.com   <span class="o">(</span>Y/n<span class="o">)</span> n
+&gt; Do you want to <span class="nb">enable</span> article pagination? <span class="o">(</span>Y/n<span class="o">)</span> n
+&gt; What is your <span class="nb">time</span> zone? <span class="o">[</span>Europe/Paris<span class="o">]</span> 
+&gt; Do you want to generate a tasks.py/Makefile to automate generation and publishing? <span class="o">(</span>Y/n<span class="o">)</span> Y
+&gt; Do you want to upload your website using FTP? <span class="o">(</span>y/N<span class="o">)</span> N
+&gt; Do you want to upload your website using SSH? <span class="o">(</span>y/N<span class="o">)</span> N
+&gt; Do you want to upload your website using Dropbox? <span class="o">(</span>y/N<span class="o">)</span> N
+&gt; Do you want to upload your website using S3? <span class="o">(</span>y/N<span class="o">)</span> N
+&gt; Do you want to upload your website using Rackspace Cloud Files? <span class="o">(</span>y/N<span class="o">)</span> N
+&gt; Do you want to upload your website using GitHub Pages? <span class="o">(</span>y/N<span class="o">)</span> N
+Done. Your new project is available at /home/hannah/Code/pelican-example-site 
+</code></pre></div>
+
+
+<p>Don’t worry, you can change these settings later if you need to.</p>
+<p>You’ll see a new set of files and folders has appeared:</p>
+<div class="highlight"><pre><span></span><code>content  Makefile  output  pelicanconf.py  publishconf.py  tasks.py
+</code></pre></div>
+
+
+<p>These govern how Pelican generates your website. </p>
+<ul>
+<li><code>output</code> is the folder where the final CSS and HTML will appear. It will be empty at the moment.</li>
+<li><code>pelicanconf.py</code> is for your settings - that's what you want to alter when you're tweaking the web-pages you display.</li>
+<li><code>publishconf.py</code> is the file that deals with published web pages, eg if we want to do anything different when sharing to the web - we don't need to alter that. </li>
+<li><code>content</code> is the folder where you put all your Markdown (.md) or reStructuredText (.rst) files for those great blog posts. </li>
+</ul>
+<p>Pelican also recognises the folder names </p>
+<div class="highlight"><pre><span></span><code>content
+    images
+    pages
+</code></pre></div>
+
+
+<p>These are for pictures and extra web-pages you can add later, such as an ‘About Me’ page.</p>
+<h1>First page</h1>
+<p>To generate HTML code for our site for the first time and take a look at the results, we call <code>pelican -lr</code>. This means "listen and reload" whenever our <code>contents</code> files change.
+ It gives us a local preview at <a href="http://localhost:8000/">http://localhost:8000/</a> - navigate there to see what the site looks like.</p>
+<p><img alt="Example blank site" src="/images/example-site.png">
+<em>The blank example site you'll see</em></p>
+<p>Hurrah! </p>
+<p>Aside: Pelican has various commands to generate and preview your HTML files. Their <a href="https://docs.getpelican.com/en/stable/quickstart.html">official quickstart tutorial</a> suggests calling two commands, <code>pelican content</code> to generate the HTML output and <code>pelican --listen</code> to preview it in your local browser. I find <code>pelican -lr</code> is more convenient because you can leave it running and it detects any changes you make and automatically updates the output - you just need to refresh your browser. That way you don't need to remember to keep calling <code>pelican content</code>.</p>
+<p>Take a look at the <code>output</code> folder and you'll see that we now have some generated files in there, including some CSS and fonts in the <code>theme</code> folder:</p>
+<div class="highlight"><pre><span></span><code><span class="o">(</span>venv<span class="o">)</span>hannah@lovelace:~/Code/pelican-example-site/output$ ls
+archives.html  authors.html  categories.html  index.html  tags.html  theme
+</code></pre></div>
+
+
+<p>This isn't personalised yet and it doesn’t have any blog posts. So let’s add one! </p>
+<h1>Add a blog post</h1>
+<p>To add a blog post, you just need to make a Markdown file inside the <code>content</code> folder. We’ll call this <code>first-post.md</code>. Note that we need to include a title and some other info in the header.</p>
+<div class="highlight"><pre><span></span><code><span class="n">Title</span><span class="o">:</span> <span class="n">F1rst</span> <span class="n">P0st</span><span class="o">!!</span>
+<span class="n">Date</span><span class="o">:</span> <span class="mi">2020</span><span class="o">-</span><span class="mi">07</span><span class="o">-</span><span class="mi">15</span>
+<span class="n">slug</span><span class="o">:</span> <span class="n">first</span><span class="o">-</span><span class="n">post</span>
+<span class="n">Category</span><span class="o">:</span> <span class="n">hannah</span><span class="err">’</span><span class="n">s</span> <span class="n">posts</span>
+<span class="n">tags</span><span class="o">:</span> <span class="n">pelican</span><span class="o">,</span> <span class="n">first</span> <span class="n">time</span> <span class="k">for</span> <span class="n">everything</span><span class="o">,</span> <span class="k">new</span>
+<span class="n">Summary</span><span class="o">:</span> <span class="n">Why</span> <span class="n">are</span> <span class="n">we</span> <span class="n">using</span> <span class="n">Pelican</span> <span class="k">for</span> <span class="k">this</span> <span class="n">blog</span><span class="o">?</span>
+
+<span class="n">This</span> <span class="k">is</span> <span class="n">my</span> <span class="n">first</span> <span class="n">blog</span> <span class="n">post</span><span class="o">.</span>
+
+<span class="err">#</span> <span class="n">Subheading</span>
+
+<span class="n">Because</span> <span class="n">Pelican</span> <span class="k">is</span> <span class="n">cool</span><span class="o">.</span>
+</code></pre></div>
+
+
+<p>Now when we refresh the localhost page again the website preview has our first post:</p>
+<p><img alt="First Post" src="/images/first-post-image.png">
+We can even click the post title to see it on its own page (named after the <code>slug</code> we gave)</p>
+<h2>Nicer looking Markdown</h2>
+<p>To add images to your posts, you need to add a separate <code>images</code> directory inside the <code>content</code> directory. Linking to these images from a blog post is done like <code>![Mouseover text]({static}/images/my_image.png)</code></p>
+<p>Things like headings, bullet points, indented quotations and so on can be done in plain Markdown. See <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">the Markdown Cheatsheet</a> for a handy reference.</p>
+<h2>Themes</h2>
+<p>There are lots of pre-made themes to style the appearance of your new blog. Take a look at [the Pelican Theme previews](http://www.pelicanthemes.com/] for inspiration. Download one you like from GitHub – <a href="https://github.com/getpelican/pelican-themes">the collection is here</a> </p>
+<p>Then add a line to your <code>pelicanconf.py</code> file to point at the location you downloaded it to:</p>
+<div class="highlight"><pre><span></span><code><span class="n">THEME</span> <span class="o">=</span> <span class="err">“</span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">user</span><span class="o">/</span><span class="n">theme</span><span class="o">-</span><span class="n">location</span><span class="o">/</span><span class="n">theme</span><span class="o">-</span><span class="n">name</span><span class="err">”</span>
+</code></pre></div>
+
+
+<p>(Make sure you use the full path <code>~/</code> doesn’t work). </p>
+<p>Then call <code>pelican -lr</code> to see your newly themed site! The themes use Jinja2 templates so it's relatively easy to modify them or make your own. My own blog uses the ‘Blue Penguin’ theme.</p>
+<h1>Hosting your site on the web</h1>
+<p>So far this website is only being displayed locally on your own computer. It’s time to show it to the world! There are a lot of different options out there for hosting your static website, some free and some paid. A couple of good free ways are GithHub Pages and Fast.io. </p>
+<h2>Fast.io</h2>
+<p><a href="https://fast.io/">Fast.io</a> is a nice way to get started without needing to know other tools. You can point it at a folder in DropBox, Google Drive or Microsoft OneDrive and it’ll refer to the files there for your website. It’s also happy to be pointed at a GitHub repository.</p>
+<p>Just make sure wherever you point it contains all of the files that were generated inside your <code>output</code> folder, in the same folder structure.</p>
+<h2>GitHub Pages</h2>
+<p>If you already have a GitHub account, <a href="https://pages.github.com/">GitHub Pages</a> is a great option. It’s free and lets you host a single site named after your GitHub profile – for instance, the address of my GitHub pages blog is https://raspberrycheesecake.github.io/ because my username is RaspberryCheesecake. All you need to do to make one of your own is create a repository called  username.github.io where username is your own username, and push the html files generated by Pelican in the ``output``` folder to it.</p>
+<p>Something that might trip you up is that you’ll probably want to make two git repositories:</p>
+<ul>
+<li>one to save your markdown blog posts and settings files like <a href="https://github.com/RaspberryCheesecake/pelican-website">https://github.com/RaspberryCheesecake/pelican-website</a></li>
+<li>the other for the HTML output of Pelican driving the website like <a href="https://github.com/RaspberryCheesecake/pelican-website">https://github.com/RaspberryCheesecake/raspberrycheesecake.github.io</a></li>
+</ul>
+<p>Since one is nested inside the other you need to be careful about how you set them up so files aren’t needlessly duplicated. You don't want the markdonwn &amp; settings repo to change every time your HTML gets updated. So make sure that it contains a .gitignore file excluding the output folder, <a href="https://github.com/RaspberryCheesecake/pelican-website/blob/master/.gitignore">like this</a></p>
+<h1>Now I want to make an interactive site!</h1>
+<p>If you want to go on to make a more interactive web app with things like live data display, feedback forms or online payments, static site builders like Pelican aren’t the right tools for the job. Static sites don’t have a tight coupling between client and server by design, so aren’t responsive enough for these kinds of applications. Why not try using <a href="https://anvil.works/learn/tutorials#starthere">Anvil</a> instead? It allows you to write full-stack web apps with Python.</p>
+</div>
+		</div>
+	</body>
+</html>
